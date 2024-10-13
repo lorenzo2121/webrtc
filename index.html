@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Audio Streaming</title>
+</head>
+<body>
+    <h1>Audio Streaming con WebRTC</h1>
+
+    <div>
+        <h2>Audio in uscita (locale)</h2>
+        <audio id="localAudio" controls autoplay></audio>
+    </div>
+
+    <div>
+        <h2>Audio in ingresso (remoto)</h2>
+        <audio id="remoteAudio" controls autoplay></audio>
+    </div>
+
+    <!-- Aggiungi il paragrafo per mostrare l'ID della stanza -->
+    <p>ID della stanza: <span id="roomId"></span></p>
+
+    <button id="startBtn">Avvia Streaming</button>
+    <button id="joinBtn">Unisciti a una sessione</button>
+
+    <!-- Importa Firebase -->
+    <script type="module">
+        // Importa le librerie Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-firestore.js";
+
+        // La configurazione di Firebase (assicurati di usare la tua configurazione personale)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDVoZyBJYJz39LAFI8pNERm25cLKsmsQiQ",
+            authDomain: "signaling-server-716ae.firebaseapp.com",
+            projectId: "signaling-server-716ae",
+            storageBucket: "signaling-server-716ae.appspot.com",
+            messagingSenderId: "704066724658",
+            appId: "1:704066724658:web:c54d618d1b96547c092d2b",
+            measurementId: "G-V8C0L10EYT"
+        };
+
+        // Inizializza Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Esporta `db` e `app` per usarli in `app.js`
+        window.db = db;
+    </script>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
